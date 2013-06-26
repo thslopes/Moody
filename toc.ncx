@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="por">
+  <head>
+    <meta content="6ba74f49-ef06-4978-8485-87ec5bce703c" name="dtb:uid"/>
+    <meta content="2" name="dtb:depth"/>
+    <meta content="calibre (0.9.18)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>MOODY V1</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="u4e6e4878-caff-4741-bf70-d68a26bbb342" playOrder="0">
+      <navLabel>
+        <text>Gênesis</text>
+      </navLabel>
+      <content src="G�nesis%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u02503875-b6a1-4a3e-8654-f718067cd2c0" playOrder="1">
+      <navLabel>
+        <text>2 Crônicas</text>
+      </navLabel>
+      <content src="2Cr�nicas%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u15879550-d833-4bf8-97c9-718a84a79e67" playOrder="2">
+      <navLabel>
+        <text>Daniel</text>
+      </navLabel>
+      <content src="Daniel%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u3f1c323c-d5ed-4389-a1d1-9912d9d4f0bb" playOrder="3">
+      <navLabel>
+        <text>Êxodo</text>
+      </navLabel>
+      <content src="�xodo%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u76ee29af-151c-4fe8-817d-0ddbb7915a47" playOrder="4">
+      <navLabel>
+        <text>Esdras</text>
+      </navLabel>
+      <content src="Esdras%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="uaf736a73-10f8-4457-84c4-48177f372f0f" playOrder="5">
+      <navLabel>
+        <text>Oséias</text>
+      </navLabel>
+      <content src="Os�ias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u0dbec608-6dc1-4de1-8ea7-9124e5624679" playOrder="6">
+      <navLabel>
+        <text>Levítico</text>
+      </navLabel>
+      <content src="Lev�tico%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ucbfe441e-ae48-4494-af2f-97d5c92a739c" playOrder="7">
+      <navLabel>
+        <text>Neemias</text>
+      </navLabel>
+      <content src="Neemias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ud04fb85c-e22e-455e-a1c9-ae365848e646" playOrder="8">
+      <navLabel>
+        <text>Joel</text>
+      </navLabel>
+      <content src="Joel%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ub2ef4249-3efd-4695-bf08-febc26a7cf03" playOrder="9">
+      <navLabel>
+        <text>Números</text>
+      </navLabel>
+      <content src="N�meros%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u9266af64-a783-4f1c-abe2-471d999caa66" playOrder="10">
+      <navLabel>
+        <text>Ester</text>
+      </navLabel>
+      <content src="Ester%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="uef78f168-2cc8-4f68-9f06-b0ccca08a3fe" playOrder="11">
+      <navLabel>
+        <text>Amós</text>
+      </navLabel>
+      <content src="Am�s%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u0df32281-f7b8-4e9a-9249-0c78d4cec276" playOrder="12">
+      <navLabel>
+        <text>Deuteronômio</text>
+      </navLabel>
+      <content src="Deuteron�mio%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u5531857f-43ec-4a19-bdde-17a890ba3571" playOrder="13">
+      <navLabel>
+        <text>Jó</text>
+      </navLabel>
+      <content src="J�%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u40357c8d-4d77-4bea-8f86-9eb73d7f5f2e" playOrder="14">
+      <navLabel>
+        <text>Obadias</text>
+      </navLabel>
+      <content src="Obadias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u8fffe716-4a58-4ce5-a10b-2f1908b6cce5" playOrder="15">
+      <navLabel>
+        <text>Josué</text>
+      </navLabel>
+      <content src="Josu�%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ub7afe2f6-8874-4e50-b349-3fd022127a71" playOrder="16">
+      <navLabel>
+        <text>Salmos</text>
+      </navLabel>
+      <content src="Salmos%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u2854b7b7-5230-4299-81c2-6030e4b6e895" playOrder="17">
+      <navLabel>
+        <text>Jonas</text>
+      </navLabel>
+      <content src="Jonas%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ubb1ab0e3-bbf4-4563-a45c-2dfb322f0fe4" playOrder="18">
+      <navLabel>
+        <text>Juízes</text>
+      </navLabel>
+      <content src="Ju�zes%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ubf02225b-1dec-46c9-932a-7620b46b1816" playOrder="19">
+      <navLabel>
+        <text>Provérbios</text>
+      </navLabel>
+      <content src="Prov�rbios%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ud5167e1e-ffd6-4e07-80f5-d7bcbff7876d" playOrder="20">
+      <navLabel>
+        <text>Miquéias</text>
+      </navLabel>
+      <content src="Miqu�ias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ucfb7ff78-a9f9-46d5-8312-8551ad7b836f" playOrder="21">
+      <navLabel>
+        <text>Rute</text>
+      </navLabel>
+      <content src="Rute%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u913d54d1-676e-493b-8ac3-6c379aa59a2e" playOrder="22">
+      <navLabel>
+        <text>Eclesiastes</text>
+      </navLabel>
+      <content src="Eclesiastes%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u340b906b-a090-429b-81b4-d6dab6ecf7dc" playOrder="23">
+      <navLabel>
+        <text>Naum</text>
+      </navLabel>
+      <content src="Naum%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ua96462cb-ddef-4e00-b5ab-0058c14567c5" playOrder="24">
+      <navLabel>
+        <text>1 Samuel</text>
+      </navLabel>
+      <content src="1Samuel%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u14778760-f49a-4a99-9abf-0d8a2009b598" playOrder="25">
+      <navLabel>
+        <text>Cantares</text>
+      </navLabel>
+      <content src="Cantares%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u40a179df-c018-4187-93a8-b20c1ebcd368" playOrder="26">
+      <navLabel>
+        <text>Habacuque</text>
+      </navLabel>
+      <content src="Habacuque%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ucc7f749d-af37-47d0-8429-a5fff9b1fd3d" playOrder="27">
+      <navLabel>
+        <text>2 Samuel</text>
+      </navLabel>
+      <content src="2Samuel%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u31ccf798-143f-48d1-97b8-a23f51267cd5" playOrder="28">
+      <navLabel>
+        <text>Isaías</text>
+      </navLabel>
+      <content src="Isa�as%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u6a2f558a-0b09-436c-8823-317c41c131fb" playOrder="29">
+      <navLabel>
+        <text>Sofonias</text>
+      </navLabel>
+      <content src="Sofonias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u9657d4b0-5c99-41b2-8027-750e865c0417" playOrder="30">
+      <navLabel>
+        <text>1 Reis</text>
+      </navLabel>
+      <content src="1Reis%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u8df13c2a-e3bc-454b-8bf6-c274b80f5fd4" playOrder="31">
+      <navLabel>
+        <text>Jeremias</text>
+      </navLabel>
+      <content src="Jeremias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ubd3b161a-4c4d-47be-a3f5-e40c19ee3830" playOrder="32">
+      <navLabel>
+        <text>Ageu</text>
+      </navLabel>
+      <content src="Ageu%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ufeff6f67-8a37-4549-a41f-a768f2d978cd" playOrder="33">
+      <navLabel>
+        <text>2 Reis</text>
+      </navLabel>
+      <content src="2Reis%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ue6a6b772-1621-41bf-9e21-d0a89af89444" playOrder="34">
+      <navLabel>
+        <text>Lamentações</text>
+      </navLabel>
+      <content src="Lamenta��es%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="uc3bebd79-2bb0-4555-8b9e-b7f5e5aace2a" playOrder="35">
+      <navLabel>
+        <text>Zacarias</text>
+      </navLabel>
+      <content src="Zacarias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u2d156c65-9a4e-405e-8127-6c53de99a6fb" playOrder="36">
+      <navLabel>
+        <text>1 Crônicas</text>
+      </navLabel>
+      <content src="1Cr�nicas%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ub90e0631-0a04-43e8-bb0f-8d4b55d86686" playOrder="37">
+      <navLabel>
+        <text>Ezequiel</text>
+      </navLabel>
+      <content src="Ezequiel%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u15b5f401-b2d9-40b4-b3fc-d94950461cab" playOrder="38">
+      <navLabel>
+        <text>Malaquias</text>
+      </navLabel>
+      <content src="Malaquias%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u81622371-899d-419b-b59c-dfb2f0e426ec" playOrder="39">
+      <navLabel>
+        <text>Mateus</text>
+      </navLabel>
+      <content src="Mateus%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="uf25b93b5-aea3-4219-bd4a-a9922b437b02" playOrder="40">
+      <navLabel>
+        <text>Efésios</text>
+      </navLabel>
+      <content src="Ef�sios%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u89202100-fed7-4882-aea3-10c7e1c769f3" playOrder="41">
+      <navLabel>
+        <text>Hebreus</text>
+      </navLabel>
+      <content src="Hebreus%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ubb71e2cb-27e6-47c9-93c6-ee7685708faf" playOrder="42">
+      <navLabel>
+        <text>Marcos</text>
+      </navLabel>
+      <content src="Marcos%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u76f949a5-b790-441f-84c0-b580867f2528" playOrder="43">
+      <navLabel>
+        <text>Filipenses</text>
+      </navLabel>
+      <content src="Filipenses%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u0fd242b6-db02-4784-8447-709db3a28ef1" playOrder="44">
+      <navLabel>
+        <text>Tiago</text>
+      </navLabel>
+      <content src="Tiago%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u78aa0dc2-723f-405c-97b5-0ddb4ef4c8ad" playOrder="45">
+      <navLabel>
+        <text>Lucas</text>
+      </navLabel>
+      <content src="Lucas%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ue2e2ab23-a56f-4271-951d-6d7bfd079955" playOrder="46">
+      <navLabel>
+        <text>Colossenses</text>
+      </navLabel>
+      <content src="Colossenses%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u594209dd-3de3-4d30-a950-7874f275c668" playOrder="47">
+      <navLabel>
+        <text>1 Pedro</text>
+      </navLabel>
+      <content src="1Pedro%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="u2c4876b8-78be-433f-bc89-98e241168ce5" playOrder="48">
+      <navLabel>
+        <text>João</text>
+      </navLabel>
+      <content src="Jo�o%20%28Moody%29.html"/>
+    </navPoint>
+    <navPoint id="ube188437-acfa-4105-92da-44abdfe81e95" playOrder="49">
+      <navLabel>
+        <text>1 Tessalonicenses</text>
+      </navLabel>
+      <content src="1Tessalonicenses%20%28Moody%29.html"/>
+    </navPoint>
+  </navMap>
+</ncx>
