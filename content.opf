@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
   <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:calibre="http://calibre.kovidgoyal.net/2009/metadata" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <meta name="calibre:title_sort" content="MOODY V3"/>
+    <meta name="calibre:title_sort" content="MOODY V6"/>
     <dc:language>pt</dc:language>
     <dc:creator opf:file-as="pc" opf:role="aut">pc</dc:creator>
     <meta name="calibre:timestamp" content="2013-06-25T04:02:12+00:00"/>
-    <dc:title>MOODY V4</dc:title>
+    <dc:title>MOODY V6</dc:title>
     <meta name="cover" content="cover"/>
     <dc:date>0101-01-01T00:00:00+00:00</dc:date>
     <dc:contributor opf:role="bkp">calibre (0.9.18) [http://calibre-ebook.com]</dc:contributor>
