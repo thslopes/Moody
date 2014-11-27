@@ -19,7 +19,7 @@ var prefix = "<p class=\"calibre2\"><b class=\"calibre1\">"
 var patternChapter = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s%d\">%s\n"
 var patternBook = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s\">%s\n"
 var patternIndex = "<a href=\"#%s\">%s</a>\n"
-var patternHeaderItem = "<p class=\"calibre2\"><a href=\"%s%s\"><b class=\"calibre1\">%s</b></a></p>\n"
+var patternHeaderItem = "<p class=\"calibre2\"><a href=\"#%s%s\"><b class=\"calibre1\">%s</b></a></p>\n"
 var patternChapterIndex = "<a href=\"#%s%d\">%d</a>\n"
 var books = initBooks()
 var book Book
@@ -31,6 +31,18 @@ func check(e error) {
 	if e != nil {
 		panic(e)
 	}
+}
+
+func write(text string) {
+	fmt.Printf(text)
+	/*
+		d := []byte(text)
+		err := ioutil.WriteFile(folder + "/golang/out.html", d, 0644)
+		check(err)
+		dat, err := ioutil.ReadFile(folder + "/golang/out.html")
+		check(err)
+		fmt.Print(string(dat))
+		*/
 }
 
 func getFiles() []os.FileInfo {
@@ -46,14 +58,18 @@ func getFileContent(fileName string) []string {
 	return lines
 }
 
-func (book *Book) printHeader() {
-	fmt.Printf(patternHeaderItem, book.Acronym, "intro", "INTRODUÇÃO")
-	fmt.Printf(patternHeaderItem, book.Acronym, "outline", "ESBOÇO")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">\n")
+func (book *Book) printHeader() string {
+	header := fmt.Sprint(patternHeaderItem, book.Acronym, "intro", "INTRODUÇÃO")
+	header += fmt.Sprint(patternHeaderItem, book.Acronym, "outline", "ESBOÇO")
+	header += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">\n")
 	for i := 1; i <= book.Chapters; i++ {
-		fmt.Printf(patternChapterIndex, book.Acronym, i, i)
+		header += fmt.Sprint(patternChapterIndex, book.Acronym, i, i)
 	}
-	fmt.Print("</b></p>\n")
+	header += fmt.Sprint("</b></p>\n")
+
+	//fmt.Sprint(header)
+
+	return header
 }
 
 func printChapter(line string) string {
@@ -63,27 +79,30 @@ func printChapter(line string) string {
 	if io == 0 || io2 == 0 {
 		line = fmt.Sprintf(patternChapter, book.Acronym, chapter, strings.Replace(line, prefix, "", 1))
 		chapter++
-		fmt.Printf(line)
+//		fmt.Sprint(line)
 	}
 	return line
 }
 
-func printIndex() {
-	fmt.Print("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">Moody Bible Institute of Chicago </b></p>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">Clique num livro bíblico para o comentário</b></p>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">ANTIGO TESTAMENTO</b></p>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\" >\n")
+func printIndex() string {
+	index := fmt.Sprint("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Moody Bible Institute of Chicago </b></p>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Clique num livro bíblico para o comentário</b></p>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">ANTIGO TESTAMENTO</b></p>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\" >\n")
 	for i := 0; i < 39; i++ {
-		fmt.Printf(patternIndex, books[i].Acronym, books[i].Name)
+		index += fmt.Sprintf(patternIndex, books[i].Acronym, books[i].Name)
 	}
-	fmt.Print("</b></p>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">NOVO TESTAMENTO</b></p>\n")
-	fmt.Print("<p class=\"calibre2\"><b class=\"calibre1\">\n")
+	index += fmt.Sprint("</b></p>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">NOVO TESTAMENTO</b></p>\n")
+	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">\n")
 	for i := 39; i < 66; i++ {
-		fmt.Printf(patternIndex, books[i].Acronym, books[i].Name)
+		index += fmt.Sprintf(patternIndex, books[i].Acronym, books[i].Name)
 	}
-	fmt.Print("</b></p>\n")
+	index += fmt.Sprint("</b></p>\n")
+
+	//fmt.Print(index)
+	return index
 }
 
 func printIntroduction(line string) string {
@@ -91,7 +110,7 @@ func printIntroduction(line string) string {
 	io := strings.Index(trimLine, fmt.Sprintf("%sINTRODUÇÃO </b></p>", prefix))
 	if io == 0 {
 		line = fmt.Sprintf(patternBook, book.Acronym+"intro", strings.Replace(line, prefix, "", 1))
-		fmt.Printf(line)
+		//fmt.Sprint(line)
 	}
 	return line
 }
@@ -101,7 +120,7 @@ func printOutline(line string) string {
 	io := strings.Index(trimLine, fmt.Sprintf("%sESBOÇO </b></p>", prefix))
 	if io == 0 {
 		line = fmt.Sprintf(patternBook, book.Acronym+"outline", strings.Replace(line, prefix, "", 1))
-		fmt.Printf(line)
+		//fmt.Sprint(line)
 	}
 	return line
 }
@@ -118,7 +137,7 @@ func printBook(line string) string {
 	io := strings.Index(trimLine, fmt.Sprintf("%s%s </b></p>", prefix, nextBook.Name))
 	io2 := strings.Index(trimLine, fmt.Sprintf("%s  </b> <b class=\"calibre1\">%s </b></p>", prefix, nextBook.Name))
 	if io == 0 || io2 == 0 {
-		//		fmt.Printf("{\"%s\",\"%s\",%d},", book.Name, book.Acronym, chapter-1)
+		//		fmt.Sprint("{\"%s\",\"%s\",%d},", book.Name, book.Acronym, chapter-1)
 		bookIdx++
 		book = books[bookIdx]
 		if book.Name == "Salmos" {
@@ -126,8 +145,8 @@ func printBook(line string) string {
 		}
 		chapter = 1
 		line = fmt.Sprintf(patternBook, book.Acronym, strings.Replace(line, prefix, "", 1))
-		fmt.Printf(line)
-		book.printHeader()
+		//fmt.Sprint(line)
+		line += book.printHeader()
 	}
 	return line
 }
@@ -146,7 +165,7 @@ func isBody(inBody bool, isHeader bool, line string) (bool, bool) {
 }
 
 func main() {
-	printIndex()
+	write(printIndex())
 	book = books[0]
 	nextBook = books[0]
 	for _, file := range getFiles() {
@@ -159,11 +178,12 @@ func main() {
 					line = printBook(line)
 					line = printOutline(line)
 					line = printIntroduction(line)
+					write(line)
 				}
 			}
 		}
 	}
-	//	fmt.Printf("{\"%s\",\"%s\",%d}\n", book.Name, book.Acronym, chapter-1)
+	//	fmt.Sprint("{\"%s\",\"%s\",%d}\n", book.Name, book.Acronym, chapter-1)
 }
 
 func initBooks() [66]Book {
