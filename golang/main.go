@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"io"
 )
 
 // Book e book
@@ -14,7 +15,7 @@ type Book struct {
 	Chapters int
 }
 
-var folder = "/home/thiago/go/src/github.com/thslopes/Moody"
+var folder = "/Users/thiago/go/src/github.com/thslopes/Moody"
 var prefix = "<p class=\"calibre2\"><b class=\"calibre1\">"
 var patternChapter = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s%d\">%s\n"
 var patternBook = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s\">%s\n"
@@ -33,16 +34,9 @@ func check(e error) {
 	}
 }
 
-func write(text string) {
-	fmt.Printf(text)
-	/*
-		d := []byte(text)
-		err := ioutil.WriteFile(folder + "/golang/out.html", d, 0644)
-		check(err)
-		dat, err := ioutil.ReadFile(folder + "/golang/out.html")
-		check(err)
-		fmt.Print(string(dat))
-		*/
+func write(f *os.File, text string) {
+	_, err := io.WriteString(f, text)
+	check(err)
 }
 
 func getFiles() []os.FileInfo {
@@ -59,11 +53,11 @@ func getFileContent(fileName string) []string {
 }
 
 func (book *Book) printHeader() string {
-	header := fmt.Sprint(patternHeaderItem, book.Acronym, "intro", "INTRODUÇÃO")
-	header += fmt.Sprint(patternHeaderItem, book.Acronym, "outline", "ESBOÇO")
+	header := fmt.Sprintf(patternHeaderItem, book.Acronym, "intro", "INTRODUÇÃO")
+	header += fmt.Sprintf(patternHeaderItem, book.Acronym, "outline", "ESBOÇO")
 	header += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">\n")
 	for i := 1; i <= book.Chapters; i++ {
-		header += fmt.Sprint(patternChapterIndex, book.Acronym, i, i)
+		header += fmt.Sprintf(patternChapterIndex, book.Acronym, i, i)
 	}
 	header += fmt.Sprint("</b></p>\n")
 
@@ -85,7 +79,8 @@ func printChapter(line string) string {
 }
 
 func printIndex() string {
-	index := fmt.Sprint("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
+	index := fmt.Sprint("<html><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><body>")
+	index += fmt.Sprint("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Moody Bible Institute of Chicago </b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Clique num livro bíblico para o comentário</b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">ANTIGO TESTAMENTO</b></p>\n")
@@ -105,14 +100,15 @@ func printIndex() string {
 	return index
 }
 
-func printIntroduction(line string) string {
+func printIntroduction(line string, bookHeader bool) (string, bool) {
 	trimLine := strings.TrimLeft(line, " ")
 	io := strings.Index(trimLine, fmt.Sprintf("%sINTRODUÇÃO </b></p>", prefix))
 	if io == 0 {
 		line = fmt.Sprintf(patternBook, book.Acronym+"intro", strings.Replace(line, prefix, "", 1))
+		bookHeader = false
 		//fmt.Sprint(line)
 	}
-	return line
+	return line, bookHeader
 }
 
 func printOutline(line string) string {
@@ -125,7 +121,8 @@ func printOutline(line string) string {
 	return line
 }
 
-func printBook(line string) string {
+func printBook(line string, bookHeader bool) (string, bool, bool) {
+	title := false
 	trimLine := strings.TrimLeft(line, " ")
 	if bookIdx < 65 {
 		nextBook = books[bookIdx+1]
@@ -147,8 +144,10 @@ func printBook(line string) string {
 		line = fmt.Sprintf(patternBook, book.Acronym, strings.Replace(line, prefix, "", 1))
 		//fmt.Sprint(line)
 		line += book.printHeader()
+		bookHeader = true
+		title = true
 	}
-	return line
+	return line, bookHeader, title
 }
 
 func isBody(inBody bool, isHeader bool, line string) (bool, bool) {
@@ -165,9 +164,14 @@ func isBody(inBody bool, isHeader bool, line string) (bool, bool) {
 }
 
 func main() {
-	write(printIndex())
-	book = books[0]
+	f, err:= os.OpenFile(folder + "/golang/out.html", os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
+	defer f.Close()
+	check(err)
+	write(f, printIndex())
+	book= books[0]
 	nextBook = books[0]
+	bookHeader := true
+	title := false
 	for _, file := range getFiles() {
 		if strings.Index(file.Name(), "index") == 0 {
 			inBody := false
@@ -175,15 +179,19 @@ func main() {
 			for _, line := range getFileContent(file.Name()) {
 				if inBody, inHeader = isBody(inBody, inHeader, line); inBody {
 					line = printChapter(line)
-					line = printBook(line)
+					line, bookHeader, title = printBook(line, bookHeader)
 					line = printOutline(line)
-					line = printIntroduction(line)
-					write(line)
+					line, bookHeader = printIntroduction(line, bookHeader)
+					if !bookHeader || title {
+						write(f, line)
+					}
+					title = false
 				}
 			}
 		}
 	}
 	//	fmt.Sprint("{\"%s\",\"%s\",%d}\n", book.Name, book.Acronym, chapter-1)
+	write(f, "</body></html>")
 }
 
 func initBooks() [66]Book {
