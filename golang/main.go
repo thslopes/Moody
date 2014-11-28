@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"strings"
-	"io"
 )
 
 // Book e book
@@ -15,7 +15,7 @@ type Book struct {
 	Chapters int
 }
 
-var folder = "/Users/thiago/go/src/github.com/thslopes/Moody"
+var folder = "/home/thiago/go/src/github.com/thslopes/Moody"
 var prefix = "<p class=\"calibre2\"><b class=\"calibre1\">"
 var patternChapter = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s%d\">%s\n"
 var patternBook = "<p class=\"calibre2\"><b class=\"calibre1\" id=\"%s\">%s\n"
@@ -73,26 +73,33 @@ func printChapter(line string) string {
 	if io == 0 || io2 == 0 {
 		line = fmt.Sprintf(patternChapter, book.Acronym, chapter, strings.Replace(line, prefix, "", 1))
 		chapter++
-//		fmt.Sprint(line)
+		//		fmt.Sprint(line)
 	}
 	return line
 }
 
-func printIndex() string {
-	index := fmt.Sprint("<html><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><body>")
-	index += fmt.Sprint("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
+func printIndex(printHeaders bool) string {
+	index := fmt.Sprint("<b class=\"calibre1\">COMENTÁRIO  BÍBLICO  MOODY </b>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Moody Bible Institute of Chicago </b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">Clique num livro bíblico para o comentário</b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">ANTIGO TESTAMENTO</b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\" >\n")
 	for i := 0; i < 39; i++ {
-		index += fmt.Sprintf(patternIndex, books[i].Acronym, books[i].Name)
+		book := books[i]
+		index += fmt.Sprintf(patternIndex, book.Acronym, book.Name)
+		if printHeaders {
+			index += book.printHeader()
+		}
 	}
 	index += fmt.Sprint("</b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">NOVO TESTAMENTO</b></p>\n")
 	index += fmt.Sprint("<p class=\"calibre2\"><b class=\"calibre1\">\n")
 	for i := 39; i < 66; i++ {
-		index += fmt.Sprintf(patternIndex, books[i].Acronym, books[i].Name)
+		book := books[i]
+		index += fmt.Sprintf(patternIndex, book.Acronym, book.Name)
+		if printHeaders {
+			index += book.printHeader()
+		}
 	}
 	index += fmt.Sprint("</b></p>\n")
 
@@ -164,11 +171,13 @@ func isBody(inBody bool, isHeader bool, line string) (bool, bool) {
 }
 
 func main() {
-	f, err:= os.OpenFile(folder + "/golang/out.html", os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
+	f, err := os.OpenFile(folder+"/golang/out.html", os.O_CREATE|os.O_TRUNC|os.O_RDWR, 0666)
 	defer f.Close()
 	check(err)
-	write(f, printIndex())
-	book= books[0]
+	write(f, "<html><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><body>")
+	write(f, printIndex(false))
+	outline := "<h1 class=\"calibre4\" id=\"calibre_pb_0\">Document Outline</h1>"
+	book = books[0]
 	nextBook = books[0]
 	bookHeader := true
 	title := false
@@ -177,6 +186,9 @@ func main() {
 			inBody := false
 			inHeader := true
 			for _, line := range getFileContent(file.Name()) {
+				if line == outline {
+					break
+				}
 				if inBody, inHeader = isBody(inBody, inHeader, line); inBody {
 					line = printChapter(line)
 					line, bookHeader, title = printBook(line, bookHeader)
@@ -191,6 +203,7 @@ func main() {
 		}
 	}
 	//	fmt.Sprint("{\"%s\",\"%s\",%d}\n", book.Name, book.Acronym, chapter-1)
+	write(f, printIndex(true))
 	write(f, "</body></html>")
 }
 
